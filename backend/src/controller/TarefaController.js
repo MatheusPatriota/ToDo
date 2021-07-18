@@ -35,5 +35,41 @@ class TarefaController {
         return res.status(500).json(error);
       });
   }
+
+  async getTask(req, res) {
+    await ModeloTarefa.findById(req.params.id)
+      .then((response) => {
+        if (response) {
+          return res.status(200).json(response);
+        } else {
+          return res.status(200).json({ error: "Tarefa Não encontrada!" });
+        }
+      })
+      .catch((error) => {
+        return res.status(500).json(error);
+      });
+  }
+
+  async deleteTask(req, res) {
+    await ModeloTarefa.deleteOne({ _id: req.params.id })
+      .then((response) => {
+        return res.status(200).json(response);
+      })
+      .catch((error) => {
+        return res.status(500).json(error);
+      });
+  }
+  async taskDone(req, res) {
+    await ModeloTarefa.findByIdAndUpdate({ _id: req.params.id }, {done: req.params.done}, {new: true} )
+      .then((response) => {
+        return res.status(200).json(response);
+      })
+      .catch((error) => {
+        return res.status(500).json(error);
+      });
+  }
+
 }
+
+
 module.exports = new TarefaController();

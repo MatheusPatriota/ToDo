@@ -11,5 +11,9 @@ router.put('/:id', ValidacaoTarefa,controllerTarefa.update)
 
 router.get('/filter/all', MacaddressValidation,controllerTarefa.getAllTasks)
 
+router.get('/:id', controllerTarefa.getTask);
 
+router.delete('/:id', controllerTarefa.deleteTask)
+
+router.put('/:id/:done', controllerTarefa.taskDone)
 module.exports = router;
