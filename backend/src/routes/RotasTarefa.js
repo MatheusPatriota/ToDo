@@ -1,19 +1,28 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const controllerTarefa = require('../controller/TarefaController');
-const MacaddressValidation = require('../middlewares/MacaddressValidation');
+const controllerTarefa = require("../controller/TarefaController");
+const ValidacaoTarefa = require("../middlewares/ValidacaoTarefa");
 
-const ValidacaoTarefa = require('../middlewares/ValidacaoTarefa')
+router.post("/", ValidacaoTarefa, controllerTarefa.create);
 
-router.post('/', ValidacaoTarefa, controllerTarefa.create);
+router.put("/:id", ValidacaoTarefa, controllerTarefa.update);
 
-router.put('/:id', ValidacaoTarefa,controllerTarefa.update)
+router.get("/:id", controllerTarefa.getTask);
 
-router.get('/filter/all', MacaddressValidation,controllerTarefa.getAllTasks)
+router.delete("/:id", controllerTarefa.deleteTask);
 
-router.get('/:id', controllerTarefa.getTask);
+router.put("/:id/:done", controllerTarefa.taskDone);
 
-router.delete('/:id', controllerTarefa.deleteTask)
+router.get("/filter/all/:macaddress", controllerTarefa.getAllTasks);
 
-router.put('/:id/:done', controllerTarefa.taskDone)
+router.get("/filter/late/:macaddress", controllerTarefa.lateTasks);
+
+router.get("/filter/today/:macaddress", controllerTarefa.todayTasks);
+
+router.get("/filter/week/:macaddress", controllerTarefa.weekTasks);
+
+router.get("/filter/month/:macaddress", controllerTarefa.monthTasks);
+
+router.get("/filter/year/:macaddress", controllerTarefa.yearTasks);
+
 module.exports = router;
