@@ -6,5 +6,7 @@ const ValidacaoTarefa = require('../middlewares/ValidacaoTarefa')
 
 router.post('/', ValidacaoTarefa, controllerTarefa.create);
 
+router.put('/:id', ValidacaoTarefa,controllerTarefa.update)
+
 
 module.exports = router;

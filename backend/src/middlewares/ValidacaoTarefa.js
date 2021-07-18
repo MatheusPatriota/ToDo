@@ -5,8 +5,7 @@ const ValidacaoTarefa = async (req, res, next) => {
 
   if (!macaddress)
     return res.status(400).json({ error: "MacAddress é obrigatório" });
-  else if (!tipo) 
-    return res.status(400).json({ error: "Tipo é obrigatório" });
+  else if (!tipo) return res.status(400).json({ error: "Tipo é obrigatório" });
   else if (!titulo)
     return res.status(400).json({ error: "Título é obrigatório" });
   else if (!descricao)
@@ -14,20 +13,30 @@ const ValidacaoTarefa = async (req, res, next) => {
   else if (!quando)
     return res.status(400).json({ error: "Data e Hora são obrigatórios" });
   else if (isPast(new Date(quando)))
-    return res
-      .status(400)
-      .json({
-        error: "Data e Hora Não podem ser cadastradas Antes da data Atual",
-      });
+    return res.status(400).json({
+      error: "Data e Hora Não podem ser cadastradas Antes da data Atual",
+    });
   else {
     let exists;
-    exists = await ModeloTarefa.findOne({ 
-        'quando': { '$eq': new Date(quando)} ,
-        'macaddress' : {'$in': macaddress}
-        }, 
-    );
-    if(exists){
-        return res.status(400).json({ error: "Já existe uma tarefa cadastrada nessa data e horário" });
+    if (req.params.id) {
+      exists = await ModeloTarefa.findOne({
+        _id: { $ne: req.params.id },
+        quando: { $eq: new Date(quando) },
+        macaddress: { $in: macaddress },
+      });
+    } else {
+      exists = await ModeloTarefa.findOne({
+        quando: { $eq: new Date(quando) },
+        macaddress: { $in: macaddress },
+      });
+    }
+
+    if (exists) {
+      return res
+        .status(400)
+        .json({
+          error: "Já existe uma tarefa cadastrada nessa data e horário",
+        });
     }
     next();
   }
