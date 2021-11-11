@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Home() {
+function Task() {
 
   return (
     // isso é um fragment
@@ -17,4 +17,4 @@ function Home() {
 
 }
 
-export { Home };
+export { Task };

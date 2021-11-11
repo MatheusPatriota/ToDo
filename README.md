@@ -6,7 +6,7 @@ O projeto descrito a seguir foi utilizado para Estudo e complementação do Port
 ## Screenshot Projeto
   
 ## Fluxo do Projeto
-```javascript
+```
 A prototipação foi idealizada e realizada utilizando a ferramenta Adobe XD, depois de 
 idealizada e validada, implementei o backend utilizando a tecnologia NodeJS e o Banco de dados
 MongoDB, logo após implementado e validado o BackEnd, fui direto para o FrontEnd que foi
