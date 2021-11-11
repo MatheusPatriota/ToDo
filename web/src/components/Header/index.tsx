@@ -1,8 +1,16 @@
 import "./styles";
+import HeaderStyles from "./styles";
 function Header() {
   return (
     <>
-      <Header></Header>
+      <HeaderStyles>
+        <div>
+          logo
+        </div>
+        <div>
+          menu
+        </div>
+      </HeaderStyles>
     </>
   );
 }

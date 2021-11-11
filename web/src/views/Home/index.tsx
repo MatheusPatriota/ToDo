@@ -1,10 +1,10 @@
+import { Header } from "../../components/Header";
 
 function Home() {
 
   return (
-    // isso é um fragment
     <>
-      <header> OI mundo sou o cabeçalho, estou presente em varios lugares</header>
+      <Header/>
       <body>
         Oi mundo eu sou o corpo, sou exclusivo
       </body>
