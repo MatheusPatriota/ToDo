@@ -16,7 +16,11 @@ function Home() {
             <FilterCard />
             <FilterCard />
           </div>
-          <div>-Tarefa-</div>
+          <div className="dividerTaks">
+            <div className="line"></div>
+            <span>Tarefa</span>
+            <div className="line"></div>
+          </div>
           <div>Cards</div>
         </body>
         <Footer />
