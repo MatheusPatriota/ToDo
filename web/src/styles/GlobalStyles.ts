@@ -13,7 +13,7 @@ body {
 }
 
 body, input, button, textarea {
-  font: 400 16px 'Roboto', sans-serif;
+  font: 400 16px 'Exo 2', sans-serif;
   
 }
 `;
