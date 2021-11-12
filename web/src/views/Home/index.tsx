@@ -1,6 +1,7 @@
 import FilterCard from "../../components/FilterCard";
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
+import TaskCard from "../../components/TaskCard";
 import HomeStyles from "./styles";
 
 function Home() {
@@ -18,10 +19,17 @@ function Home() {
           </div>
           <div className="dividerTaks">
             <div className="line"></div>
-            <span>Tarefa</span>
+            <span>Tarefas</span>
             <div className="line"></div>
           </div>
-          <div>Cards</div>
+          <div className="cardsContainer">
+            <TaskCard/>
+            <TaskCard/>
+            <TaskCard/>
+            <TaskCard/>
+            <TaskCard/>
+            <TaskCard/>
+          </div>
         </body>
         <Footer />
       </HomeStyles>

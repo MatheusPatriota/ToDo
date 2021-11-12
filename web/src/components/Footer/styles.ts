@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const FooterStyles = styled.div`
+const FooterStyles = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: relative;
   bottom: 1%;
   
   width: 100%;
@@ -33,7 +33,7 @@ const FooterBar = styled.div`
 
   background: #fe5f55;
 
-  position: absolute;
+  position: relative;
   bottom: 0%;
 `;
 

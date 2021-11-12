@@ -19,9 +19,22 @@ const HomeStyles = styled.div`
         height: 3px;
         background: #0d1821;
       }
-      span{
+      span {
+        text-transform: uppercase;
         padding: 3px;
       }
+    }
+
+    .cardsContainer {
+      padding: 20px;
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+      justify-content: center;
+      align-self: center;
+      
+      margin: 20px 0px 20px 0px ;
     }
   }
 `;
