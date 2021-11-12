@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 
 function Home() {
@@ -8,9 +9,7 @@ function Home() {
       <body>
         Oi mundo eu sou o corpo, sou exclusivo
       </body>
-      <footer>
-        Eu sou o rodapé :)
-      </footer>
+     <Footer/>
     </>
   );
 
