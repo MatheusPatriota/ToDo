@@ -1,18 +1,28 @@
+import FilterCard from "../../components/FilterCard";
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
+import HomeStyles from "./styles";
 
 function Home() {
-
   return (
     <>
-      <Header/>
-      <body>
-        Oi mundo eu sou o corpo, sou exclusivo
-      </body>
-     <Footer/>
+      <HomeStyles>
+        <Header />
+        <body>
+          <div className="filters">
+            <FilterCard />
+            <FilterCard />
+            <FilterCard />
+            <FilterCard />
+            <FilterCard />
+          </div>
+          <div>-Tarefa-</div>
+          <div>Cards</div>
+        </body>
+        <Footer />
+      </HomeStyles>
     </>
   );
-
 }
 
 export { Home };
