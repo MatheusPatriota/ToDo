@@ -4,7 +4,7 @@ const FooterStyles = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: relative;
+  /* position: ; */
   bottom: 1%;
   
   width: 100%;
@@ -33,7 +33,7 @@ const FooterBar = styled.div`
 
   background: #fe5f55;
 
-  position: relative;
+  /* position: fixed; */
   bottom: 0%;
 `;
 
