@@ -13,6 +13,28 @@ const TaskCardStyles  = styled.div`
 
   justify-self: center; 
   align-self: center; 
+
+  .cardStyles{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .iconContainer{
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+  
+      align-items: center;
+    }
+
+    .dateContainer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
 `
 
 export {TaskCardStyles}
