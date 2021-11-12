@@ -2,7 +2,7 @@ import styled from "styled-components";
 const HeaderStyles = styled.header`
   display: flex;
   justify-content: space-evenly;
-  
+
   width: 100%;
   height: 80px;
   left: 0px;
@@ -11,41 +11,73 @@ const HeaderStyles = styled.header`
   background: #0d1821;
   color: #ffffff;
 
-  .logoContainer{
+  .logoContainer {
     display: flex;
     height: 100%;
     align-items: center;
-    .logo{
+    .logo {
       height: 60%;
     }
   }
 
-  .menuContainer{
+  .menuContainer {
     display: flex;
     height: 100%;
-    justify-content:flex;
+    justify-content: flex;
     align-items: center;
 
     li + li::before {
-    content: " | ";
-}
+      content: " | ";
+      margin-right: 4px;
+    }
 
-    ul{
+    ul {
       display: flex;
       gap: 12px;
       text-decoration: none;
       list-style: none;
+      align-items: center;
     }
-    ul li a{
+    ul li a {
       color: #ffffff;
       text-transform: uppercase;
       text-decoration: none;
     }
 
-    ul li a:hover{
-      color: #FE5F55;
+    ul li a:hover {
+      color: #fe5f55;
       text-transform: uppercase;
       text-decoration: none;
+    }
+
+    .notification {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      a {
+        display: flex;
+        svg {
+          font-size: 30px;
+        }
+        div {
+          background-color: #fe5f55;
+          color: #fff;
+
+          height: 20px;
+          width: 20px;
+
+          font-size: 14px;
+          border-radius: 50%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          position: relative;
+          right: 10px;
+        }
+      }
     }
   }
 `;
