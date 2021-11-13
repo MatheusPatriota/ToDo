@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const server = express();
 
+server.use(cors());
 server.use(express.json());
 
 const rotaTarefa = require("./routes/RotasTarefa");
 
-server.use('/tarefa', rotaTarefa);
+server.use('/task', rotaTarefa);
 
-server.listen(3000, () => {
+server.listen(4000, () => {
   console.log("API online");
 });

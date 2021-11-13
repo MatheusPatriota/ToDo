@@ -3,6 +3,10 @@ const router = express.Router();
 const controllerTarefa = require("../controller/TarefaController");
 const ValidacaoTarefa = require("../middlewares/ValidacaoTarefa");
 
+router.get('/', (req,res) => {
+  res.send('Bem vindo a nossa API')
+})
+
 router.post("/", ValidacaoTarefa, controllerTarefa.create);
 
 router.put("/:id", ValidacaoTarefa, controllerTarefa.update);
