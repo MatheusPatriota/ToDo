@@ -25,7 +25,6 @@ function Home() {
     await api
       .get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
       .then((response) => {
-        console.log("console loadtask", response.data);
         setTasks(response.data);
       });
   }
@@ -64,10 +63,9 @@ function Home() {
           <div className="cardsContainer">
             {tasks ? (
               tasks.map((task: TaskType) => {
-                console.log(task.titulo);
                 return (
                   <TaskCard
-                    icon=""
+                    icon={task.tipo}
                     title={task.titulo}
                     quando={task.quando}
                   />

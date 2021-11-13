@@ -4,10 +4,13 @@ import Icon from "../Icon";
 import { TaskCardStyles } from "./styles";
 
 type TaskCardTypes = {
-  icon: any;
+  icon: number;
   title: string;
   quando: string;
 };
+
+
+
 
 export default function TaskCard(props: TaskCardTypes) {
   const [count, setcount] = useState(0);
@@ -19,7 +22,7 @@ export default function TaskCard(props: TaskCardTypes) {
       <TaskCardStyles>
         <div className="cardStyles">
           <div className="iconContainer">
-            <Icon />
+            <Icon iconNumber={props.icon} />
             <span>{props.title}</span>
           </div>
           <div className="dateContainer">
