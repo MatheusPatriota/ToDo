@@ -69,8 +69,7 @@ function Home() {
                   <TaskCard
                     icon=""
                     title={task.titulo}
-                    date={task.quando}
-                    time="00"
+                    quando={task.quando}
                   />
                 );
               })
