@@ -4,22 +4,26 @@ import { TaskCardStyles } from "./styles";
 
 type TaskCardTypes = {
   icon: any,
+  title: string,
   date: string,
   time: string,
 }
 
 export default function TaskCard(props: TaskCardTypes) {
+
+  
+
   return (
     <>
       <TaskCardStyles>
         <div className="cardStyles">
           <div className="iconContainer">
             <Icon />
-            <span>Academia</span>
+            <span>{props.title}</span>
           </div>
           <div className="dateContainer">
-            <span>12/11/2021</span>
-            <span>14:00</span>
+            <span>{props.date}</span>
+            <span>{props.time}</span>
           </div>
         </div>
       </TaskCardStyles>

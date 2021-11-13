@@ -1,6 +1,10 @@
 import styled from "styled-components";
 const HomeStyles = styled.div`
   body {
+    button{
+      border: none;
+      background-color: transparent;
+    }
     .filters {
       padding: 20px;
       display: grid;

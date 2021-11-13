@@ -2,12 +2,16 @@ import React from "react";
 import { FilterCardStyles } from "./styles";
 import { FaFilter } from "react-icons/fa";
 
-export default function FilterCard() {
+type FilterCardTypes = {
+  description: string,
+}
+
+export default function FilterCard(props: FilterCardTypes) {
   return (
     <>
       <FilterCardStyles>
         <FaFilter />
-        <span>Hoje</span>
+        <span>{props.description}</span>
       </FilterCardStyles>
     </>
   );
