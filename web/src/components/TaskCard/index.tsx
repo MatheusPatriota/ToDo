@@ -2,7 +2,13 @@ import React from "react";
 import Icon from "../Icon";
 import { TaskCardStyles } from "./styles";
 
-export default function TaskCard() {
+type TaskCardTypes = {
+  icon: any,
+  date: string,
+  time: string,
+}
+
+export default function TaskCard(props: TaskCardTypes) {
   return (
     <>
       <TaskCardStyles>

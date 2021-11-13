@@ -23,18 +23,22 @@ function Home() {
             <div className="line"></div>
           </div>
           <div className="cardsContainer">
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
-            <TaskCard/>
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
+            <TaskCard icon="" date="12/11/2021" time="20:44" />
           </div>
         </body>
         <Footer />

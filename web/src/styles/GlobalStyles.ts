@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
 body {
   background: #f8f8f8;
   color: #29292e;
+  position: relative;
+  min-height: 100vh;
 }
 
 body, input, button, textarea {

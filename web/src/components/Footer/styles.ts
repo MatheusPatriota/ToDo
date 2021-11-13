@@ -33,7 +33,7 @@ const FooterBar = styled.div`
 
   background: #fe5f55;
 
-  /* position: fixed; */
+  /* position: absolute; */
   bottom: 0%;
 `;
 
