@@ -23,6 +23,8 @@ const NewTaskStyles = styled.div`
       flex-direction: column;
 
       input {
+        padding: 20px;
+
         height: 35px;
         border-radius: 10px;
         border: none;

@@ -36,11 +36,11 @@ function NewTaskPage() {
             </div>
             <div className="date">
               <span>Data:</span>
-              <input type="text" />
+              <input type="date" />
             </div>
             <div className="time">
               <span>Hora:</span>
-              <input type="text" />
+              <input type="time" />
             </div>
             <div className="finishArea">
               <div className="text">
