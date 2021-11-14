@@ -7,7 +7,7 @@ import NewTaskStyles from "./styles";
 
 function NewTaskPage() {
   const [lateCount, setLateCount] = useState();
-  const [type, setType] = useState<number>();
+  const [type, setType] = useState<number>(0);
   const [id, setId] = useState();
   const [done, setDone] = useState(false);
   const [title, setTitle] = useState("");
@@ -34,7 +34,7 @@ function NewTaskPage() {
     await api
       .post("/task", {
         macaddress,
-        type: "0",
+        type,
         title,
         description,
         when: `${date}T${time}:00.000`,
@@ -69,7 +69,7 @@ function NewTaskPage() {
                         setType(index);
                         console.log("cliquei no botao", type);
                       }}
-                      className={`${type && type != index && "inative"}`}
+                      className={`${type && type !== index && "inative"} ${icon === undefined ? "undefined" : ""}`}
                     >
                       <img src={icon} alt="Tipo da Tarefa" />
                     </button>

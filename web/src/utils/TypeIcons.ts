@@ -11,6 +11,7 @@ import task from "../assets/task.png";
 
 
 const TypeIcons = [
+  undefined,
   soccer,
   task,
   food,

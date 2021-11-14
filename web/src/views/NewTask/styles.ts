@@ -18,10 +18,15 @@ const NewTaskStyles = styled.div`
         height: 60px;
       }
 
-      button{
+      button{ 
         border: none;
         background: transparent;
         cursor: pointer;
+
+        
+      }
+      .undefined {
+        display: none;
       }
 
       button:hover{
