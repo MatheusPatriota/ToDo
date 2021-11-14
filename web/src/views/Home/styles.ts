@@ -28,7 +28,7 @@ const HomeStyles = styled.div`
       }
     }
 
-    .dividerTaks {
+    .dividerTasks {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,6 +54,11 @@ const HomeStyles = styled.div`
       align-self: center;
 
       margin: 20px 0px 20px 0px;
+
+      a{
+        text-decoration: none;
+        color: #0D1821;
+      }
 
       @media (max-width: 1433px) {
         grid-template-columns: 1fr 1fr 1fr 1fr;

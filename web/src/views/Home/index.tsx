@@ -6,8 +6,10 @@ import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 import TaskCard from "../../components/TaskCard";
 import HomeStyles from "./styles";
+import { Link } from "react-router-dom";
 
 type TaskType = {
+  _id: any;
   created: string;
   description: string;
   done: boolean;
@@ -67,20 +69,22 @@ function Home() {
               <FilterCard description="Ano" />
             </button>
           </div>
-          <div className="dividerTaks">
+          <div className="dividerTasks">
             <div className="line"></div>
-            <span>{filterActived === "late" ? "Atrasadas":"Tarefas"}</span>
+            <span>{filterActived === "late" ? "Atrasadas" : "Tarefas"}</span>
             <div className="line"></div>
           </div>
           <div className="cardsContainer">
             {tasks ? (
               tasks.map((task: TaskType) => {
                 return (
-                  <TaskCard
-                    iconIndex={task.type}
-                    title={task.title}
-                    when={task.when}
-                  />
+                  <Link to={`/task/${task._id}`}>
+                    <TaskCard
+                      iconIndex={task.type}
+                      title={task.title}
+                      when={task.when}
+                    />
+                  </Link>
                 );
               })
             ) : (
