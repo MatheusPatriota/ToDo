@@ -55,7 +55,12 @@ const HeaderStyles = styled.header`
       flex-direction: row;
       align-items: center;
 
-      a {
+      button {
+        background: transparent;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        
         display: flex;
         svg {
           font-size: 30px;

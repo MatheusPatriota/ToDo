@@ -4,7 +4,12 @@ import logo from "../../assets/logo.svg";
 import { IoNotifications } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-function Header() {
+
+type HeaderTypes = {
+  lateTasksCount?: number,
+  clickNotification?: any,
+}
+function Header(props: HeaderTypes) {
   return (
     <>
       <HeaderStyles>
@@ -23,10 +28,10 @@ function Header() {
               <Link to="/">sincronizar celular</Link>
             </li>
             <li className="notification">
-              <Link to="/">
+              <button type="button" onClick={props.clickNotification} title="Notificações Atrasadas">
                 <IoNotifications />
-                <div>5</div>
-              </Link>
+                <div>{props.lateTasksCount}</div>
+              </button>
             </li>
           </ul>
         </div>

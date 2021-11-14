@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const HomeStyles = styled.div`
-  body {
+  
     button{
       border: none;
       background-color: transparent;
@@ -75,7 +75,7 @@ const HomeStyles = styled.div`
         display: none;
       }
     }
-  }
+  
 `;
 
 export default HomeStyles;

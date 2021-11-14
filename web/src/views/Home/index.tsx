@@ -20,6 +20,7 @@ type TaskType = {
 function Home() {
   const [filterActived, setFilterActived] = useState<String>("all");
   const [tasks, setTasks]: any[] = useState([]);
+  const [lateCount, setLateCount] = useState();
 
   async function loadTasks() {
     await api
@@ -29,15 +30,26 @@ function Home() {
       });
   }
 
+  async function lateTasksVerify() {
+    await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
+      setLateCount(response.data.length);
+    });
+  }
+
+  function Notification() {
+    setFilterActived("late");
+  }
+
   useEffect(() => {
     loadTasks();
-  }, [filterActived, tasks]);
+    lateTasksVerify();
+  }, [filterActived, lateCount, tasks]);
 
   return (
     <>
-      <HomeStyles>
-        <Header />
-        <body>
+      <Header lateTasksCount={lateCount} clickNotification={Notification} />
+      <body>
+        <HomeStyles>
           <div className="filters">
             <button onClick={() => setFilterActived("all")}>
               <FilterCard description="Todos" />
@@ -57,7 +69,7 @@ function Home() {
           </div>
           <div className="dividerTaks">
             <div className="line"></div>
-            <span>Tarefas</span>
+            <span>{filterActived === "late" ? "Atrasadas":"Tarefas"}</span>
             <div className="line"></div>
           </div>
           <div className="cardsContainer">
@@ -75,9 +87,9 @@ function Home() {
               <div>não existem tasks cadastradas</div>
             )}
           </div>
-        </body>
-        <Footer />
-      </HomeStyles>
+        </HomeStyles>
+      </body>
+      <Footer />
     </>
   );
 }
