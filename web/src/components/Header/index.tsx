@@ -1,43 +1,32 @@
 import "./styles";
 import { Background, HeaderStyles } from "./styles";
-import logo from '../../assets/logo.svg'
-import {IoNotifications} from 'react-icons/io5'
+import logo from "../../assets/logo.svg";
+import { IoNotifications } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <>
       <HeaderStyles>
         <div className="logoContainer">
-          <img src={logo} alt="logo ToDo"  className="logo"/>
+          <img src={logo} alt="logo ToDo" className="logo" />
         </div>
         <div className="menuContainer">
           <ul>
             <li>
-              <a href="/">
-              início
-
-              </a>
+              <Link to="/">início</Link>
             </li>
             <li>
-              <a href="/">
-              nova tarefa
-
-              </a>
+              <Link to="/new-task">nova tarefa</Link>
             </li>
             <li>
-              <a href="/">
-
-              sincronizar celular
-              </a>
+              <Link to="/">sincronizar celular</Link>
             </li>
             <li className="notification">
-              <a href="/">
-                <IoNotifications/>
-                <div>
-                  5
-                </div>
-              </a>
-
+              <Link to="/">
+                <IoNotifications />
+                <div>5</div>
+              </Link>
             </li>
           </ul>
         </div>

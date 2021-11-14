@@ -1,20 +1,20 @@
 import React from 'react';
+import Footer from '../../components/Footer';
+import { Header } from '../../components/Header';
 
-function Home() {
+function NewTaskPage() {
 
   return (
     // isso é um fragment
     <>
-      <header> OI mundo sou o cabeçalho, estou presente em varios lugares</header>
+      <Header/>
       <body>
         Oi mundo eu sou o corpo, sou exclusivo
       </body>
-      <footer>
-        Eu sou o rodapé :)
-      </footer>
+      <Footer/>
     </>
   );
 
 }
 
-export { Home };
+export { NewTaskPage };
