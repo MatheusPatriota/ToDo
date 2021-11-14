@@ -12,6 +12,25 @@ const NewTaskStyles = styled.div`
 
       display: flex;
       gap: 20px;
+      justify-content: space-evenly;
+
+      img{
+        height: 60px;
+      }
+
+      button{
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      button:hover{
+        opacity: 0.85;
+      }
+
+    }
+    .inative{
+      opacity: 0.5;
     }
 
     .title,
@@ -39,6 +58,7 @@ const NewTaskStyles = styled.div`
       }
 
       textarea {
+        padding: 20px;
         border-radius: 10px;
         border: none;
 

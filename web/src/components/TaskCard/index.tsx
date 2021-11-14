@@ -1,28 +1,28 @@
 import React, { useMemo, useState } from "react";
 import { format } from "date-fns";
-import Icon from "../Icon";
 import { TaskCardStyles } from "./styles";
+import TypeIcons from "../../utils/TypeIcons";
 
 type TaskCardTypes = {
-  icon: number;
+  iconIndex: number;
   title: string;
-  quando: string;
+  when: string;
 };
-
-
-
 
 export default function TaskCard(props: TaskCardTypes) {
   const [count, setcount] = useState(0);
-  const date = useMemo(() => format(new Date(props.quando), 'dd/MM/yyyy'), [count]  );
-  const hour = useMemo(() => format(new Date(props.quando), "HH:mm"), [count] );
+  const date = useMemo(
+    () => format(new Date(props.when), "dd/MM/yyyy"),
+    [count]
+  );
+  const hour = useMemo(() => format(new Date(props.when), "HH:mm"), [count]);
 
   return (
     <>
       <TaskCardStyles>
         <div className="cardStyles">
           <div className="iconContainer">
-            <Icon iconNumber={props.icon} />
+          <img src={TypeIcons[props.iconIndex]} alt="Icone da Tarefa"/>
             <span>{props.title}</span>
           </div>
           <div className="dateContainer">

@@ -9,12 +9,12 @@ import HomeStyles from "./styles";
 
 type TaskType = {
   created: string;
-  descricao: string;
+  description: string;
   done: boolean;
   macaddress: string;
-  quando: string;
-  tipo: number;
-  titulo: string;
+  when: string;
+  type: number;
+  title: string;
 };
 
 function Home() {
@@ -77,9 +77,9 @@ function Home() {
               tasks.map((task: TaskType) => {
                 return (
                   <TaskCard
-                    icon={task.tipo}
-                    title={task.titulo}
-                    quando={task.quando}
+                    iconIndex={task.type}
+                    title={task.title}
+                    when={task.when}
                   />
                 );
               })

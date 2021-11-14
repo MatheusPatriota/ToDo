@@ -28,6 +28,10 @@ const TaskCardStyles = styled.div`
       flex-direction: column;
 
       align-items: center;
+
+      img{
+        height: 70px;
+      }
     }
 
     .dateContainer {
