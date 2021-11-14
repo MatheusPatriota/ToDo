@@ -1,18 +1,18 @@
 const ModeloTarefa = require("../model/ModeloTarefa");
 const { isPast } = require("date-fns");
 const ValidacaoTarefa = async (req, res, next) => {
-  const { macaddress, tipo, titulo, descricao, quando } = req.body;
+  const { macaddress, type, title, description, when } = req.body;
 
   if (!macaddress)
     return res.status(400).json({ error: "MacAddress é obrigatório" });
-  else if (!tipo) return res.status(400).json({ error: "Tipo é obrigatório" });
-  else if (!titulo)
+  else if (!type) return res.status(400).json({ error: "Tipo é obrigatório" });
+  else if (!title)
     return res.status(400).json({ error: "Título é obrigatório" });
-  else if (!descricao)
+  else if (!description)
     return res.status(400).json({ error: "Descrição é obrigatória" });
-  else if (!quando)
+  else if (!when)
     return res.status(400).json({ error: "Data e Hora são obrigatórios" });
-  else if (isPast(new Date(quando)))
+  else if (isPast(new Date(when)))
     return res.status(400).json({
       error: "Data e Hora Não podem ser cadastradas Antes da data Atual",
     });
@@ -21,12 +21,12 @@ const ValidacaoTarefa = async (req, res, next) => {
     if (req.params.id) {
       exists = await ModeloTarefa.findOne({
         _id: { $ne: req.params.id },
-        quando: { $eq: new Date(quando) },
+        when: { $eq: new Date(when) },
         macaddress: { $in: macaddress },
       });
     } else {
       exists = await ModeloTarefa.findOne({
-        quando: { $eq: new Date(quando) },
+        when: { $eq: new Date(when) },
         macaddress: { $in: macaddress },
       });
     }

@@ -38,7 +38,7 @@ class TarefaController {
 
   async getAllTasks(req, res) {
     await ModeloTarefa.find({ macaddress: { $in: req.params.macaddress } })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
@@ -86,10 +86,10 @@ class TarefaController {
 
   async lateTasks(req, res) {
     await ModeloTarefa.find({
-      quando: { $lt: currentDate },
+      when: { $lt: currentDate },
       macaddress: { $in: req.params.macaddress },
     })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
@@ -102,9 +102,9 @@ class TarefaController {
   async todayTasks(req, res) {
     await ModeloTarefa.find({
       macaddress: { $in: req.params.macaddress },
-      quando: { $gte: startOfDay(currentDate), $lt: endOfDay(currentDate) },
+      when: { $gte: startOfDay(currentDate), $lt: endOfDay(currentDate) },
     })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
@@ -116,9 +116,9 @@ class TarefaController {
   async weekTasks(req, res) {
     await ModeloTarefa.find({
       macaddress: { $in: req.params.macaddress },
-      quando: { $gte: startOfWeek(currentDate), $lt: endOfWeek(currentDate) },
+      when: { $gte: startOfWeek(currentDate), $lt: endOfWeek(currentDate) },
     })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
@@ -131,9 +131,9 @@ class TarefaController {
     console.log(currentDate);
     await ModeloTarefa.find({
       macaddress: { $in: req.params.macaddress },
-      quando: { $gte: startOfMonth(currentDate), $lt: endOfMonth(currentDate) },
+      when: { $gte: startOfMonth(currentDate), $lt: endOfMonth(currentDate) },
     })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
@@ -145,9 +145,9 @@ class TarefaController {
   async yearTasks(req, res) {
     await ModeloTarefa.find({
       macaddress: { $in: req.params.macaddress },
-      quando: { $gte: startOfYear(currentDate), $lt: endOfYear(currentDate) },
+      when: { $gte: startOfYear(currentDate), $lt: endOfYear(currentDate) },
     })
-      .sort("quando")
+      .sort("when")
       .then((response) => {
         return res.status(200).json(response);
       })
