@@ -1,15 +1,15 @@
-function Home() {
+import Footer from "../../components/Footer";
+import { Header } from "../../components/Header";
+
+function QRCODEPage() {
   return (
     // isso é um fragment
     <>
-      <header>
-        {" "}
-        OI mundo sou o cabeçalho, estou presente em varios lugares
-      </header>
+      <Header/>
       Oi mundo eu sou o corpo, sou exclusivo
-      <footer>Eu sou o rodapé :)</footer>
+      <Footer/>
     </>
   );
 }
 
-export { Home };
+export { QRCODEPage };
