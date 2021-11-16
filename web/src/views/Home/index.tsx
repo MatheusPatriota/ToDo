@@ -50,47 +50,47 @@ function Home() {
   return (
     <>
       <Header lateTasksCount={lateCount} clickNotification={Notification} />
-        <HomeStyles>
-          <div className="filters">
-            <button onClick={() => setFilterActived("all")}>
-              <FilterCard description="Todos" />
-            </button>
-            <button onClick={() => setFilterActived("today")}>
-              <FilterCard description="Hoje" />
-            </button>
-            <button onClick={() => setFilterActived("week")}>
-              <FilterCard description="Semana" />
-            </button>
-            <button onClick={() => setFilterActived("month")}>
-              <FilterCard description="Mês" />
-            </button>
-            <button onClick={() => setFilterActived("year")}>
-              <FilterCard description="Ano" />
-            </button>
-          </div>
-          <div className="dividerTasks">
-            <div className="line"></div>
-            <span>{filterActived === "late" ? "Atrasadas" : "Tarefas"}</span>
-            <div className="line"></div>
-          </div>
-          <div className="cardsContainer">
-            {tasks ? (
-              tasks.map((task: TaskType) => {
-                return (
-                  <Link to={`/task/${task._id}`}>
-                    <TaskCard
-                      iconIndex={task.type}
-                      title={task.title}
-                      when={task.when}
-                    />
-                  </Link>
-                );
-              })
-            ) : (
-              <div>não existem tasks cadastradas</div>
-            )}
-          </div>
-        </HomeStyles>
+      <HomeStyles>
+        <div className="filters">
+          <button onClick={() => setFilterActived("all")}>
+            <FilterCard description="Todos" />
+          </button>
+          <button onClick={() => setFilterActived("today")}>
+            <FilterCard description="Hoje" />
+          </button>
+          <button onClick={() => setFilterActived("week")}>
+            <FilterCard description="Semana" />
+          </button>
+          <button onClick={() => setFilterActived("month")}>
+            <FilterCard description="Mês" />
+          </button>
+          <button onClick={() => setFilterActived("year")}>
+            <FilterCard description="Ano" />
+          </button>
+        </div>
+        <div className="dividerTasks">
+          <div className="line"></div>
+          <span>{filterActived === "late" ? "Atrasadas" : "Tarefas"}</span>
+          <div className="line"></div>
+        </div>
+        <div className="cardsContainer">
+          {tasks ? (
+            tasks.map((task: TaskType) => {
+              return (
+                <TaskCard
+                  iconIndex={task.type}
+                  title={task.title}
+                  when={task.when}
+                  description={task.description}
+                  _id={task._id}
+                />
+              );
+            })
+          ) : (
+            <div>não existem tasks cadastradas</div>
+          )}
+        </div>
+      </HomeStyles>
       <Footer />
     </>
   );

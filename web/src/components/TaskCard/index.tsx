@@ -2,13 +2,17 @@ import React, { useMemo, useState } from "react";
 import { format } from "date-fns";
 import { TaskCardStyles } from "./styles";
 import TypeIcons from "../../utils/TypeIcons";
-import { AiFillDelete,  AiFillEdit } from "react-icons/ai";
-import {HiDocumentSearch} from 'react-icons/hi'
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { HiDocumentSearch } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import Popup from "../Popup";
 
 type TaskCardTypes = {
   iconIndex: number;
   title: string;
+  description: string;
   when: string;
+  _id: any;
 };
 
 export default function TaskCard(props: TaskCardTypes) {
@@ -18,6 +22,12 @@ export default function TaskCard(props: TaskCardTypes) {
     [count]
   );
   const hour = useMemo(() => format(new Date(props.when), "HH:mm"), [count]);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -35,13 +45,15 @@ export default function TaskCard(props: TaskCardTypes) {
           </div>
           <div className="flip-card-back">
             <div className="editButton">
-              <button title="editar tarefa">
-                <AiFillEdit />
-              </button>
+              <Link to={`/task/${props._id}`}>
+                <button title="editar tarefa">
+                  <AiFillEdit />
+                </button>
+              </Link>
               Editar
             </div>
             <div className="viewTaskButton">
-              <button title="visualizar tarefa">
+              <button title="visualizar tarefa" onClick={togglePopup}>
                 <HiDocumentSearch />
               </button>
               Visualizar
@@ -53,8 +65,32 @@ export default function TaskCard(props: TaskCardTypes) {
               Remover
             </div>
           </div>
+
+          {/* <Popup
+            trigger={<button className="button"> Open Modal </button>}
+            modal
+            >
+            
+          </Popup> */}
         </div>
       </TaskCardStyles>
+        {isOpen && (
+          <Popup
+            content={
+              <>
+                <div>
+                  <span>Descrição</span>
+                  <span>{props.description}</span>
+                </div>
+                <div>
+                  <span>{date}</span>
+                  <span>{hour}</span>
+                </div>
+              </>
+            }
+            handleClose={togglePopup}
+          />
+        )}
     </>
   );
 }

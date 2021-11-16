@@ -88,7 +88,12 @@ const TaskCardStyles = styled.div`
           background-color: #fe5f55;
         }
       }
+      .editButton a{
+        height:60px;
+        width:60px;
 
+        margin-bottom: 5px;
+      }
       .editButton button {
         background: #344966;
         color: #fff;

@@ -25,7 +25,7 @@ function Header(props: HeaderTypes) {
               <Link to="/new-task">nova tarefa</Link>
             </li>
             <li>
-              <Link to="/">sincronizar celular</Link>
+              <Link to="/sincronizar">sincronizar celular</Link>
             </li>
             <li className="notification">
               <button type="button" onClick={props.clickNotification} title="Notificações Atrasadas">
