@@ -128,7 +128,6 @@ class TarefaController {
   }
 
   async monthTasks(req, res) {
-    console.log(currentDate);
     await ModeloTarefa.find({
       macaddress: { $in: req.params.macaddress },
       when: { $gte: startOfMonth(currentDate), $lt: endOfMonth(currentDate) },
