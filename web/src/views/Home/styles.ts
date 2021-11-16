@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const HomeStyles = styled.div`
-  
+    height:100vh;
     button{
       border: none;
       background-color: transparent;

@@ -45,12 +45,11 @@ function Home() {
   useEffect(() => {
     loadTasks();
     lateTasksVerify();
-  }, [filterActived, lateCount, tasks]);
+  }, [filterActived]);
 
   return (
     <>
       <Header lateTasksCount={lateCount} clickNotification={Notification} />
-      <body>
         <HomeStyles>
           <div className="filters">
             <button onClick={() => setFilterActived("all")}>
@@ -92,7 +91,6 @@ function Home() {
             )}
           </div>
         </HomeStyles>
-      </body>
       <Footer />
     </>
   );
