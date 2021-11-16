@@ -3,8 +3,9 @@ import styled from "styled-components";
 const TaskCardStyles = styled.div`
   height: 200px;
   width: 250px;
+  perspective: 1000px;
 
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.15);
 
   padding: 20px;
@@ -17,32 +18,104 @@ const TaskCardStyles = styled.div`
   cursor: pointer;
 
   .cardStyles {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .iconContainer {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
+    position: relative;
 
-      align-items: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 
-      img{
-        height: 70px;
+    .flip-card-front {
+      /* background-color: #bbb; */
+      color: black;
+
+      .iconContainer {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        img {
+          height: 70px;
+        }
+      }
+
+      .dateContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
       }
     }
 
-    .dateContainer {
+    .flip-card-back {
+      /* background-color: #2980b9; */
+      color: white;
+      transform: rotateY(180deg);
+
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
+
+      .editButton,
+      .deleteButton,
+      .viewTaskButton {
+        color: #0d1821;
+        font-size: 14px;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        button {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-bottom: 5px;
+
+          font-size: 25px;
+        }
+
+        button:hover {
+          background-color: #fe5f55;
+        }
+      }
+
+      .editButton button {
+        background: #344966;
+        color: #fff;
+      }
+
+      .deleteButton button {
+        background: #ff2100;
+        color: #fff;
+      }
+
+      .viewTaskButton button {
+        background: #468fed;
+        color: #fff;
+      }
     }
 
-    :hover {
-      opacity: 0.65;
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
+  }
+  :hover .cardStyles {
+    transform: rotateY(180deg);
   }
 `;
 
