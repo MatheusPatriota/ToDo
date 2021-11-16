@@ -74,23 +74,23 @@ export default function TaskCard(props: TaskCardTypes) {
           </Popup> */}
         </div>
       </TaskCardStyles>
-        {isOpen && (
-          <Popup
-            content={
-              <>
-                <div>
-                  <span>Descrição</span>
-                  <span>{props.description}</span>
-                </div>
-                <div>
-                  <span>{date}</span>
-                  <span>{hour}</span>
-                </div>
-              </>
-            }
-            handleClose={togglePopup}
-          />
-        )}
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <div className="firstDiv">
+                <span className="title">Descrição</span>
+                <span className="description">{props.description}</span>
+              </div>
+              <div className="dateTime">
+                <span className="date">{date}</span>
+                <span className="hour">{hour}</span>
+              </div>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
     </>
   );
 }

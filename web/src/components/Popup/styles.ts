@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 const PopupStyles = styled.div`
   /* Popup style */
-  
-    position: fixed;
-    background: #00000050;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-  
+
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
 
   .box {
     position: relative;
@@ -23,6 +22,29 @@ const PopupStyles = styled.div`
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
+
+    .content {
+      .firstDiv {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title {
+        font-size: 25px;
+      }
+
+      .description {
+        margin: 10px 0;
+        font-size: 18px;
+      }
+
+      .dateTime {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+      }
+    }
   }
 
   .close-icon {

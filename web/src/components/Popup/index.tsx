@@ -12,7 +12,7 @@ function Popup(props: PopupTypes) {
         <span className="close-icon" onClick={props.handleClose}>
           x
         </span>
-        {props.content}
+        <div className="content">{props.content}</div>
       </div>
     </PopupStyles>
   );
