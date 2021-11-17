@@ -65,13 +65,6 @@ export default function TaskCard(props: TaskCardTypes) {
               Remover
             </div>
           </div>
-
-          {/* <Popup
-            trigger={<button className="button"> Open Modal </button>}
-            modal
-            >
-            
-          </Popup> */}
         </div>
       </TaskCardStyles>
       {isOpen && (

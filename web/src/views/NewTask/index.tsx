@@ -57,84 +57,86 @@ function NewTaskPage() {
     <>
       <NewTaskStyles>
         <Header lateTasksCount={lateCount} />
-        <div className="content">
-          <div className="categories">
-            {TypeIcons.map(
-              (icon, index) =>
-                index >= 0 && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setType(index);
-                      console.log("cliquei no botao", type);
-                    }}
-                    className={`${type && type !== index && "inative"} ${
-                      icon === undefined ? "undefined" : ""
-                    }`}
-                  >
-                    <img src={icon} alt="Tipo da Tarefa" />
-                  </button>
-                )
-            )}
-          </div>
-          <div className="title">
-            <span>titulo:</span>
-            <input
-              type="text"
-              placeholder="título da tarefa"
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
-          </div>
-          <div className="description">
-            <span>Descrição:</span>
-            <textarea
-              name="description"
-              id="description"
-              cols={60}
-              rows={10}
-              placeholder="descrição da tarefa"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            ></textarea>
-          </div>
-          <div className="date">
-            <span>Data:</span>
-            <input
-              type="date"
-              onChange={(e) => {
-                setDate(e.target.value);
-              }}
-            />
-          </div>
-          <div className="time">
-            <span>Hora:</span>
-            <input
-              type="time"
-              onChange={(e) => {
-                setTime(e.target.value);
-              }}
-            />
-          </div>
-          <div className="finishArea">
-            <div className="text">
-              <div className="checkboxArea">
-                <input
-                  type="checkbox"
-                  checked={done}
-                  onChange={() => {
-                    setDone(!done);
-                  }}
-                />
-                <span>Concluído</span>
-              </div>
-              <div className="checkboxArea">
-                <span>Excluir</span>
-              </div>
+        <div className="containerContent">
+          <div className="content">
+            <div className="categories">
+              {TypeIcons.map(
+                (icon, index) =>
+                  index >= 0 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setType(index);
+                        console.log("cliquei no botao", type);
+                      }}
+                      className={`${type && type !== index && "inative"} ${
+                        icon === undefined ? "undefined" : ""
+                      }`}
+                    >
+                      <img src={icon} alt="Tipo da Tarefa" />
+                    </button>
+                  )
+              )}
             </div>
-            <button onClick={createTask}>Salvar</button>
+            <div className="title">
+              <span>titulo:</span>
+              <input
+                type="text"
+                placeholder="título da tarefa"
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              />
+            </div>
+            <div className="description">
+              <span>Descrição:</span>
+              <textarea
+                name="description"
+                id="description"
+                cols={60}
+                rows={10}
+                placeholder="descrição da tarefa"
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              ></textarea>
+            </div>
+            <div className="date">
+              <span>Data:</span>
+              <input
+                type="date"
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
+              />
+            </div>
+            <div className="time">
+              <span>Hora:</span>
+              <input
+                type="time"
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
+              />
+            </div>
+            <div className="finishArea">
+              <div className="text">
+                <div className="checkboxArea">
+                  <input
+                    type="checkbox"
+                    checked={done}
+                    onChange={() => {
+                      setDone(!done);
+                    }}
+                  />
+                  <span>Concluído</span>
+                </div>
+                <div className="checkboxArea">
+                  <span>Excluir</span>
+                </div>
+              </div>
+              <button onClick={createTask}>Salvar</button>
+            </div>
           </div>
         </div>
         <Footer />
