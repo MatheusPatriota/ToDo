@@ -57,7 +57,7 @@ function NewTaskPage() {
     <>
       <NewTaskStyles>
         <Header lateTasksCount={lateCount} />
-        <div className="containerContent">
+        <div className="contentContainer">
           <div className="content">
             <div className="categories">
               {TypeIcons.map(

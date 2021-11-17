@@ -4,7 +4,7 @@ const NewTaskStyles = styled.div`
   flex-direction: column;
 
   align-items: center;
-  .containerContent{
+  .contentContainer {
     height: 100vh;
     width: 100%;
 
