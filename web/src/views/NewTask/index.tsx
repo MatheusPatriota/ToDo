@@ -6,8 +6,11 @@ import api from "../../services/api";
 import NewTaskStyles from "./styles";
 import { useParams } from "react-router";
 import { format } from "date-fns";
+import { Navigate } from 'react-router-dom';
+
 
 function NewTaskPage() {
+  const [redirect, setRedirect] = useState(false);
   const [lateCount, setLateCount] = useState();
   const [type, setType] = useState<number>(0);
   const { id } = useParams();
@@ -36,9 +39,9 @@ function NewTaskPage() {
     });
   }
 
-  async function createTask() {
+  async function updateTask() {
     await api
-      .post("/task", {
+      .put(`/task/${id}`, {
         macaddress,
         type,
         title,
@@ -46,12 +49,36 @@ function NewTaskPage() {
         when: `${date}T${time}:00.000`,
       })
       .then(() => {
-        alert("tarefa cadastrada com sucesso!");
+        alert("tarefa Atualizada com sucesso!");
+        setRedirect(true);
       })
       .catch((e) => {
-        alert("algo deu errado");
+        alert("algo deu errado na atualização");
         console.log(e.message);
       });
+  }
+
+  async function createTask() {
+    if (id) {
+      updateTask();
+    } else {
+      await api
+        .post("/task", {
+          macaddress,
+          type,
+          title,
+          description,
+          when: `${date}T${time}:00.000`,
+        })
+        .then(() => {
+          alert("tarefa cadastrada com sucesso!");
+          setRedirect(true);
+        })
+        .catch((e) => {
+          alert("algo deu errado");
+          console.log(e.message);
+        });
+    }
   }
 
   useEffect(() => {
@@ -63,6 +90,7 @@ function NewTaskPage() {
     // isso é um fragment
     <>
       <NewTaskStyles>
+        {redirect && <Navigate to="/" />}
         <Header lateTasksCount={lateCount} />
         <div className="contentContainer">
           <div className="content">
