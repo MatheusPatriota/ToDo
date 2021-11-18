@@ -4,16 +4,18 @@ import { Header } from "../../components/Header";
 import TypeIcons from "../../utils/TypeIcons";
 import api from "../../services/api";
 import NewTaskStyles from "./styles";
+import { useParams } from "react-router";
+import { format } from "date-fns";
 
 function NewTaskPage() {
   const [lateCount, setLateCount] = useState();
   const [type, setType] = useState<number>(0);
-  const [id, setId] = useState();
+  const { id } = useParams();
   const [done, setDone] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [time, setHour] = useState("");
   const [macaddress, setMacAddress] = useState("11:11:11:11:11:11");
 
   async function lateTasksVerify() {
@@ -22,15 +24,19 @@ function NewTaskPage() {
     });
   }
 
+  async function loadTasks() {
+    console.log("esse é o id", id);
+    await api.get(`/task/${id}`).then((response) => {
+      console.log(response.data.when);
+      setType(response.data.iconIndex);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+      setDate(format(new Date(response.data.when), "yyyy-MM-dd"));
+      setHour(format(new Date(response.data.when), "HH:mm"));
+    });
+  }
+
   async function createTask() {
-    console.log(
-      macaddress,
-      type,
-      title,
-      description,
-      `${date}T${time}.000`,
-      done
-    );
     await api
       .post("/task", {
         macaddress,
@@ -50,6 +56,7 @@ function NewTaskPage() {
 
   useEffect(() => {
     lateTasksVerify();
+    loadTasks();
   }, [lateCount]);
 
   return (
@@ -66,11 +73,11 @@ function NewTaskPage() {
                     <button
                       type="button"
                       onClick={() => {
-                        setType(index);
                         console.log("cliquei no botao", type);
+                        setType(index);
                       }}
-                      className={`${type && type !== index && "inative"} ${
-                        icon === undefined ? "undefined" : ""
+                      className={`${index && type !== index && "inative"} ${
+                        index === 0 ? "undefined" : ""
                       }`}
                     >
                       <img src={icon} alt="Tipo da Tarefa" />
@@ -86,6 +93,7 @@ function NewTaskPage() {
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
+                value={title}
               />
             </div>
             <div className="description">
@@ -99,6 +107,7 @@ function NewTaskPage() {
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
+                value={description}
               ></textarea>
             </div>
             <div className="date">
@@ -108,6 +117,7 @@ function NewTaskPage() {
                 onChange={(e) => {
                   setDate(e.target.value);
                 }}
+                value={date}
               />
             </div>
             <div className="time">
@@ -115,8 +125,9 @@ function NewTaskPage() {
               <input
                 type="time"
                 onChange={(e) => {
-                  setTime(e.target.value);
+                  setHour(e.target.value);
                 }}
+                value={time}
               />
             </div>
             <div className="finishArea">

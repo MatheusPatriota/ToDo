@@ -6,6 +6,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { HiDocumentSearch } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Popup from "../Popup";
+import api from "../../services/api";
 
 type TaskCardTypes = {
   iconIndex: number;
