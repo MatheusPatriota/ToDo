@@ -6,7 +6,6 @@ import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 import TaskCard from "../../components/TaskCard";
 import HomeStyles from "./styles";
-import { Link } from "react-router-dom";
 
 type TaskType = {
   _id: any;
@@ -20,7 +19,7 @@ type TaskType = {
 };
 
 function Home() {
-  const [filterActived, setFilterActived] = useState<String>("all");
+  const [filterActived, setFilterActived] = useState("all");
   const [tasks, setTasks]: any[] = useState([]);
   const [lateCount, setLateCount] = useState();
 

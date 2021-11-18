@@ -6,12 +6,11 @@ import api from "../../services/api";
 import NewTaskStyles from "./styles";
 import { useParams } from "react-router";
 import { format } from "date-fns";
-import { Navigate } from 'react-router-dom';
-
+import { Navigate } from "react-router-dom";
 
 function NewTaskPage() {
   const [redirect, setRedirect] = useState(false);
-  const [lateCount, setLateCount] = useState();
+  const [lateCount, setLateCount] = useState(0);
   const [type, setType] = useState<number>(0);
   const { id } = useParams();
   const [done, setDone] = useState(false);
@@ -28,10 +27,8 @@ function NewTaskPage() {
   }
 
   async function loadTasks() {
-    console.log("esse é o id", id);
     await api.get(`/task/${id}`).then((response) => {
-      console.log(response.data.when);
-      setType(response.data.iconIndex);
+      setType(response.data.type);
       setTitle(response.data.title);
       setDescription(response.data.description);
       setDate(format(new Date(response.data.when), "yyyy-MM-dd"));
@@ -59,6 +56,22 @@ function NewTaskPage() {
   }
 
   async function createTask() {
+    if (type === 0) {
+      return alert("informe a categoria da tarefa");
+    }
+    else if (title === "") {
+      return alert("informe o Titulo da tarefa");
+    }
+    else if (description === "") {
+      return alert("informe a Descrição da tarefa");
+    }
+    else if (date === "") {
+      return alert("informe a Data da tarefa");
+    }
+    else if (time === "") {
+      return alert("informe a Hora da tarefa");
+    }
+
     if (id) {
       updateTask();
     } else {
@@ -127,6 +140,7 @@ function NewTaskPage() {
             <div className="description">
               <span>Descrição:</span>
               <textarea
+                required
                 name="description"
                 id="description"
                 cols={60}
@@ -174,7 +188,7 @@ function NewTaskPage() {
                   <span>Excluir</span>
                 </div>
               </div>
-              <button onClick={createTask}>Salvar</button>
+              <button type="submit" onClick={createTask}>Salvar</button>
             </div>
           </div>
         </div>

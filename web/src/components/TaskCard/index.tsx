@@ -6,7 +6,6 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { HiDocumentSearch } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Popup from "../Popup";
-import api from "../../services/api";
 
 type TaskCardTypes = {
   iconIndex: number;
@@ -17,12 +16,11 @@ type TaskCardTypes = {
 };
 
 export default function TaskCard(props: TaskCardTypes) {
-  const [count, setcount] = useState(0);
   const date = useMemo(
     () => format(new Date(props.when), "dd/MM/yyyy"),
-    [count]
+    [props.when]
   );
-  const hour = useMemo(() => format(new Date(props.when), "HH:mm"), [count]);
+  const hour = useMemo(() => format(new Date(props.when), "HH:mm"), [props.when]);
 
   const [isOpen, setIsOpen] = useState(false);
 
