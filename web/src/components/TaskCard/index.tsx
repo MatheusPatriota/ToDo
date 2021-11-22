@@ -6,6 +6,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { HiDocumentSearch } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Popup from "../Popup";
+import api from "../../services/api";
 
 type TaskCardTypes = {
   iconIndex: number;
@@ -20,13 +21,28 @@ export default function TaskCard(props: TaskCardTypes) {
     () => format(new Date(props.when), "dd/MM/yyyy"),
     [props.when]
   );
-  const hour = useMemo(() => format(new Date(props.when), "HH:mm"), [props.when]);
-
+  const hour = useMemo(
+    () => format(new Date(props.when), "HH:mm"),
+    [props.when]
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+
+  async function deleteTask(id: string) {
+    const response = window.confirm(
+      "Tem certeza que quer deletetar essa tarefa?"
+    );
+    if (response) {
+      await api.delete(`task/${id}`).then(() => {
+        alert("tarefa removida");
+      });
+    } else {
+      alert("tarefa não removida");
+    }
+  }
 
   return (
     <>
@@ -58,7 +74,10 @@ export default function TaskCard(props: TaskCardTypes) {
               Visualizar
             </div>
             <div className="deleteButton">
-              <button title="remover tarefa">
+              <button
+                title="remover tarefa"
+                onClick={() => deleteTask(props._id)}
+              >
                 <AiFillDelete />
               </button>
               Remover

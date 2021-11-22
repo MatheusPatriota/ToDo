@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 
 import FilterCard from "../../components/FilterCard";
@@ -23,13 +23,27 @@ function Home() {
   const [tasks, setTasks]: any[] = useState([]);
   const [lateCount, setLateCount] = useState();
 
-  async function loadTasks() {
+  const loadTasks = useCallback(async () => {
     await api
       .get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
       .then((response) => {
+        console.log(response.data);
         setTasks(response.data);
       });
-  }
+  }, [filterActived]); // every time id changed, new book will be loaded
+
+  useEffect(() => {
+    loadTasks();
+    lateTasksVerify();
+  }, [loadTasks]); // useEffect will run once and when id changes
+
+  // async function loadTasks() {
+  //   await api
+  //     .get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
+  //     .then((response) => {
+  //       setTasks(response.data);
+  //     });
+  // }
 
   async function lateTasksVerify() {
     await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
@@ -41,10 +55,10 @@ function Home() {
     setFilterActived("late");
   }
 
-  useEffect(() => {
-    loadTasks();
-    lateTasksVerify();
-  }, [filterActived]);
+  // useEffect(() => {
+  //   loadTasks();
+  //   lateTasksVerify();
+  // }, [filterActived]);
 
   return (
     <>

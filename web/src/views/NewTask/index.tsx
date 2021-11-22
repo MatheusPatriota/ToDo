@@ -58,17 +58,13 @@ function NewTaskPage() {
   async function createTask() {
     if (type === 0) {
       return alert("informe a categoria da tarefa");
-    }
-    else if (title === "") {
+    } else if (title === "") {
       return alert("informe o Titulo da tarefa");
-    }
-    else if (description === "") {
+    } else if (description === "") {
       return alert("informe a Descrição da tarefa");
-    }
-    else if (date === "") {
+    } else if (date === "") {
       return alert("informe a Data da tarefa");
-    }
-    else if (time === "") {
+    } else if (time === "") {
       return alert("informe a Hora da tarefa");
     }
 
@@ -184,11 +180,10 @@ function NewTaskPage() {
                   />
                   <span>Concluído</span>
                 </div>
-                <div className="checkboxArea">
-                  <span>Excluir</span>
-                </div>
               </div>
-              <button type="submit" onClick={createTask}>Salvar</button>
+              <button type="submit" onClick={createTask}>
+                Salvar
+              </button>
             </div>
           </div>
         </div>
