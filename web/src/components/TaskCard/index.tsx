@@ -37,7 +37,7 @@ export default function TaskCard(props: TaskCardTypes) {
     );
     if (response) {
       await api.delete(`task/${id}`).then(() => {
-        alert("tarefa removida");
+        alert("tarefa removida ");
       });
     } else {
       alert("tarefa não removida");
