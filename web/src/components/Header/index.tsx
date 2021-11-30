@@ -5,6 +5,7 @@ import { IoNotifications } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import IsConnected from "../../utils/IsConnected";
 
 type HeaderTypes = {
   clickNotification?: any;
@@ -20,7 +21,12 @@ function Header(props: HeaderTypes) {
 
   useEffect(() => {
     lateTasksVerify();
-  },[])
+  }, []);
+
+  async function logout() {
+    await localStorage.removeItem('@todo/macaddress');
+    window.location.reload();
+  }
 
   return (
     <>
@@ -39,8 +45,15 @@ function Header(props: HeaderTypes) {
             <li>
               <Link to="/sincronizar">sincronizar celular</Link>
             </li>
+            {IsConnected && (
+              <li>
+                <button className="exit" onClick={logout}>
+                  Sair
+                </button>
+              </li>
+            )}
 
-            {lateCount >0  && (
+            {lateCount > 0 && (
               <li className="notification">
                 <button
                   type="button"

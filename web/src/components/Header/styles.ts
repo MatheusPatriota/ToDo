@@ -50,6 +50,21 @@ const HeaderStyles = styled.header`
       text-decoration: none;
     }
 
+    .exit {
+      background-color: #fe5f55;
+      color: #ffff;
+      
+      height: 30px;
+      width: 50px;
+      border: none;
+      border-radius: 5px;
+
+      cursor: pointer;
+    }
+    .exit:hover {
+      background-color: #5872ff;
+    }
+
     .notification {
       display: flex;
       flex-direction: row;
@@ -60,7 +75,7 @@ const HeaderStyles = styled.header`
         color: #ffffff;
         border: none;
         cursor: pointer;
-        
+
         display: flex;
         svg {
           font-size: 30px;
