@@ -15,12 +15,44 @@ const QRCODEPageStyles = styled.div`
     color: #0d1821;
 
     margin-top:40px;
+  }
+  p{
+    font-weight: 700;
+  }
+ 
+`;
+
+const MacAddressInputStyles = styled.div`
+  input{
+    margin-top:10px;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius:5px;
+    border: 1px solid #0d1821;
+  }
+
+  button{
+    margin-top:10px;
+    height: 30px;
+    width: 100%;
+
+    border-radius:5px;
+
+    border: none;
+    background: #0d1821;
+
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+
     cursor: pointer;
   }
 
-  .qrcodeContainer:hover{
-    color: #2b4f6d;
+  button:hover{
+    background: #fe5f55;
   }
-`;
-
+`
 export default QRCODEPageStyles;
+export {MacAddressInputStyles}
