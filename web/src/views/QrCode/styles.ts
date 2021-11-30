@@ -30,6 +30,7 @@ const MacAddressInputStyles = styled.div`
     width: 100%;
     border-radius:5px;
     border: 1px solid #0d1821;
+    text-align: center;
   }
 
   button{
