@@ -7,6 +7,9 @@ import { Header } from "../../components/Header";
 import TaskCard from "../../components/TaskCard";
 import HomeStyles from "./styles";
 
+import IsConnected from "../../utils/IsConnected";
+import { Navigate } from "react-router-dom";
+
 type TaskType = {
   _id: any;
   created: string;
@@ -21,6 +24,7 @@ type TaskType = {
 function Home() {
   const [filterActived, setFilterActived] = useState("all");
   const [tasks, setTasks]: any[] = useState([]);
+  const [redirect, setRedirect] = useState(false);
 
   const loadTasks = useCallback(async () => {
     await api
@@ -31,22 +35,21 @@ function Home() {
       });
   }, [filterActived]); // every time id changed, new book will be loaded
 
-  useEffect(() => {
-    loadTasks();
-  }, [loadTasks]); // useEffect will run once and when id changes
-
-
   function Notification() {
     setFilterActived("late");
   }
 
-  // useEffect(() => {
-  //   loadTasks();
-  //   lateTasksVerify();
-  // }, [filterActived]);
+  useEffect(() => {
+    loadTasks();
+
+    if (!IsConnected) {
+      setRedirect(true);
+    }
+  }, [loadTasks]); // useEffect will run once and when id changes
 
   return (
     <>
+      {redirect && <Navigate to="/sincronizar" />}
       <Header clickNotification={Notification} />
       <HomeStyles>
         <div className="filters">

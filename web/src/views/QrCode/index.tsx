@@ -4,15 +4,20 @@ import QRCODEPageStyles, { MacAddressInputStyles } from "./styles";
 import { ImQrcode } from "react-icons/im";
 import Qr from "qrcode.react";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 function QRCODEPage() {
   const [macaddress, setMacaddress] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   async function saveMacaddress() {
     await localStorage.setItem("@todo/macaddress", macaddress);
+    setRedirect(true);
+    //tambem poderia ser window.location.reload
   }
 
   return (
     <>
+      {redirect && <Navigate to="/" />}
       <Header />
       <QRCODEPageStyles>
         <span>Capture o QRCODE com o APP</span>
@@ -29,7 +34,9 @@ function QRCODEPage() {
             onChange={(e) => setMacaddress(e.target.value)}
             value={macaddress}
           />
-          <button type="button" onClick={saveMacaddress}>Sincronizar</button>
+          <button type="button" onClick={saveMacaddress}>
+            Sincronizar
+          </button>
         </MacAddressInputStyles>
       </QRCODEPageStyles>
       <Footer />
