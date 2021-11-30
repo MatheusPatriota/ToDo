@@ -10,7 +10,6 @@ import { Navigate } from "react-router-dom";
 
 function NewTaskPage() {
   const [redirect, setRedirect] = useState(false);
-  const [lateCount, setLateCount] = useState(0);
   const [type, setType] = useState<number>(0);
   const { id } = useParams();
   const [done, setDone] = useState(false);
@@ -19,12 +18,6 @@ function NewTaskPage() {
   const [date, setDate] = useState("");
   const [time, setHour] = useState("");
   const [macaddress, setMacAddress] = useState("11:11:11:11:11:11");
-
-  async function lateTasksVerify() {
-    await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
-      setLateCount(response.data.length);
-    });
-  }
 
   async function loadTasks() {
     await api.get(`/task/${id}`).then((response) => {
@@ -91,16 +84,15 @@ function NewTaskPage() {
   }
 
   useEffect(() => {
-    lateTasksVerify();
     loadTasks();
-  }, [lateCount]);
+  }, [loadTasks]);
 
   return (
     // isso é um fragment
     <>
       <NewTaskStyles>
         {redirect && <Navigate to="/" />}
-        <Header lateTasksCount={lateCount} />
+        <Header />
         <div className="contentContainer">
           <div className="content">
             <div className="categories">

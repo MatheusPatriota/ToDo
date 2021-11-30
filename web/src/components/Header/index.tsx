@@ -3,13 +3,25 @@ import { Background, HeaderStyles } from "./styles";
 import logo from "../../assets/logo.svg";
 import { IoNotifications } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import api from "../../services/api";
 
 type HeaderTypes = {
-  lateTasksCount?: number,
-  clickNotification?: any,
-}
+  clickNotification?: any;
+};
 function Header(props: HeaderTypes) {
+  const [lateCount, setLateCount] = useState(0);
+
+  async function lateTasksVerify() {
+    await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
+      setLateCount(response.data.length);
+    });
+  }
+
+  useEffect(() => {
+    lateTasksVerify();
+  },[])
+
   return (
     <>
       <HeaderStyles>
@@ -27,12 +39,19 @@ function Header(props: HeaderTypes) {
             <li>
               <Link to="/sincronizar">sincronizar celular</Link>
             </li>
-            <li className="notification">
-              <button type="button" onClick={props.clickNotification} title="Notificações Atrasadas">
-                <IoNotifications />
-                <div>{props.lateTasksCount}</div>
-              </button>
-            </li>
+
+            {lateCount >0  && (
+              <li className="notification">
+                <button
+                  type="button"
+                  onClick={props.clickNotification}
+                  title="Tarefas Atrasadas"
+                >
+                  <IoNotifications />
+                  <div>{lateCount}</div>
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </HeaderStyles>

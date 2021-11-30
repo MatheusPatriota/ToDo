@@ -21,7 +21,6 @@ type TaskType = {
 function Home() {
   const [filterActived, setFilterActived] = useState("all");
   const [tasks, setTasks]: any[] = useState([]);
-  const [lateCount, setLateCount] = useState();
 
   const loadTasks = useCallback(async () => {
     await api
@@ -34,22 +33,8 @@ function Home() {
 
   useEffect(() => {
     loadTasks();
-    lateTasksVerify();
   }, [loadTasks]); // useEffect will run once and when id changes
 
-  // async function loadTasks() {
-  //   await api
-  //     .get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
-  //     .then((response) => {
-  //       setTasks(response.data);
-  //     });
-  // }
-
-  async function lateTasksVerify() {
-    await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
-      setLateCount(response.data.length);
-    });
-  }
 
   function Notification() {
     setFilterActived("late");
@@ -62,7 +47,7 @@ function Home() {
 
   return (
     <>
-      <Header lateTasksCount={lateCount} clickNotification={Notification} />
+      <Header clickNotification={Notification} />
       <HomeStyles>
         <div className="filters">
           <button onClick={() => setFilterActived("all")}>
