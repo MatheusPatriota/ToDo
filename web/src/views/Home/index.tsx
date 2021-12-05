@@ -28,7 +28,7 @@ function Home() {
 
   const loadTasks = useCallback(async () => {
     await api
-      .get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
+      .get(`/task/filter/${filterActived}/${IsConnected}`)
       .then((response) => {
         console.log(response.data);
         setTasks(response.data);
@@ -42,14 +42,14 @@ function Home() {
   useEffect(() => {
     loadTasks();
 
-    if (!IsConnected) {
-      setRedirect(true);
-    }
+    // if (!IsConnected) {
+    //   setRedirect(true);
+    // }
   }, [loadTasks]); // useEffect will run once and when id changes
 
   return (
     <>
-      {redirect && <Navigate to="/sincronizar" />}
+      {/* {redirect && <Navigate to="/sincronizar" />} */}
       <Header clickNotification={Notification} />
       <HomeStyles>
         <div className="filters">

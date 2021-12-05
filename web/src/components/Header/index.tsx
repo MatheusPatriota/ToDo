@@ -14,7 +14,7 @@ function Header(props: HeaderTypes) {
   const [lateCount, setLateCount] = useState(0);
 
   async function lateTasksVerify() {
-    await api.get(`/task/filter/late/11:11:11:11:11:11`).then((response) => {
+    await api.get(`/task/filter/late/${IsConnected}`).then((response) => {
       setLateCount(response.data.length);
     });
   }

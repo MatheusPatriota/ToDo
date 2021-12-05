@@ -7,6 +7,7 @@ import NewTaskStyles from "./styles";
 import { useParams } from "react-router";
 import { format } from "date-fns";
 import { Navigate } from "react-router-dom";
+import IsConnected from "../../utils/IsConnected";
 
 function NewTaskPage() {
   const [redirect, setRedirect] = useState(false);
@@ -17,7 +18,7 @@ function NewTaskPage() {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [time, setHour] = useState("");
-  const [macaddress, setMacAddress] = useState("11:11:11:11:11:11");
+  const [macaddress, setMacAddress] = useState(IsConnected);
 
   async function loadTasks() {
     await api.get(`/task/${id}`).then((response) => {
@@ -32,7 +33,7 @@ function NewTaskPage() {
   async function updateTask() {
     await api
       .put(`/task/${id}`, {
-        macaddress,
+        macaddress: IsConnected,
         type,
         title,
         description,
@@ -84,6 +85,9 @@ function NewTaskPage() {
   }
 
   useEffect(() => {
+    if(!IsConnected){
+      setRedirect(true);
+    }
     loadTasks();
   }, [loadTasks]);
 

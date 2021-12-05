@@ -1,19 +1,24 @@
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 import QRCODEPageStyles, { MacAddressInputStyles } from "./styles";
-import { ImQrcode } from "react-icons/im";
 import Qr from "qrcode.react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import IsConnected from "../../utils/IsConnected";
 function QRCODEPage() {
-  const [macaddress, setMacaddress] = useState("");
+  const [macaddress, setMacaddress] = useState(IsConnected || "");
   const [redirect, setRedirect] = useState(false);
 
   async function saveMacaddress() {
-    await localStorage.setItem("@todo/macaddress", macaddress);
-    setRedirect(true);
-    //tambem poderia ser window.location.reload
+    if (macaddress === "") {
+      alert("macaddress invalido!");
+    } else {
+      await localStorage.setItem("@todo/macaddress", macaddress);
+      // window.location.reload();
+      setRedirect(true);
+    }
   }
+  useEffect(() => {}, [IsConnected]);
 
   return (
     <>
